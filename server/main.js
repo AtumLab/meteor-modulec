@@ -31,7 +31,24 @@ Meteor.startup(function () {
 		});
 		postModule.create(post, function(){});
 	}
-	
+	var accountModule = WEBAPP.find('Account');
+	if(Meteor.users.find().count() === 0) {
+    	console.log('Adding in users');
+    	var account = accountModule.validateData('AccountModel',{
+			username: 'admin',
+			password: 'admin',				
+			emails: 'particle4dev@gmail.com',
+			profile :{					
+				avatar: '',
+				introduce: '',
+				contact: ''
+			}
+		});
+		// 1.Complete
+		accountModule.create(account);
+		// 2. Error
+		//accountModule.create(account);
+	}
 	//start APP
 	WEBAPP._start();	
 });

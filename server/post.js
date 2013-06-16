@@ -1,7 +1,6 @@
-//if (Meteor.isServer) {
-	// code to run on server at startup
+//if (Meteor.isServer) {	
 	WEBAPP.find('Post').implement({
-		_start: function(){		
+		_start: function(){
 			this.makeChannel();
 		},
 		makeChannel: function(){			
